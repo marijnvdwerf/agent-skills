@@ -1,0 +1,22 @@
+{
+  "name": "marijnvdwerf-agent-skills",
+  "owner": {
+    "name": "Marijn van der Werf"
+  },
+  "metadata": {
+    "description": "N64 decompilation skills",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "decomp-n64",
+      "description": "N64 game decompilation workflow assistant for setting up projects with splat64, ninja build systems, libultra identification, and compiler configuration.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/n64-decomp",
+        "./skills/n64-decomp-ido"
+      ]
+    }
+  ]
+}
