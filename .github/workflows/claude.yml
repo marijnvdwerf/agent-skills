@@ -36,6 +36,10 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
 
+          # Install the example-skills plugin from the Anthropic skills marketplace
+          plugin_marketplaces: "https://github.com/anthropics/skills.git"
+          plugins: "example-skills@anthropic-agent-skills"
+
           # This is an optional setting that allows Claude to read CI results on PRs
           additional_permissions: |
             actions: read
