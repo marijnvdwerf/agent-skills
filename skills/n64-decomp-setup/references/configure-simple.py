@@ -32,6 +32,7 @@ CROSS_LD = f"{CROSS}ld"
 CROSS_OBJCOPY = f"{CROSS}objcopy"
 
 INCLUDES = "-I include"
+DEFINES = "-D_FINALROM -DNDEBUG"  # Add -DBUILD_VERSION=VERSION_H after identifying libultra version
 AS_FLAGS = f"-EB -march=vr4300 -mtune=vr4300 -G 0 {INCLUDES}"
 
 
@@ -52,7 +53,7 @@ def create_build_script(linker_entries: list[LinkerEntry]):
     ninja.rule(
         "as",
         description="as $in",
-        command=f"{CROSS_CPP} {INCLUDES} $in | {CROSS_AS} {AS_FLAGS} -o $out",
+        command=f"{CROSS_CPP} {INCLUDES} {DEFINES} $in | {CROSS_AS} {AS_FLAGS} -o $out",
     )
 
     # Binary linking rule

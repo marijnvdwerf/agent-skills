@@ -14,7 +14,7 @@
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/n64-decomp",
+        "./skills/n64-decomp-setup",
         "./skills/n64-decomp-ido",
         "./skills/n64-decomp-splat"
       ]
