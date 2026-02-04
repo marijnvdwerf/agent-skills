@@ -150,6 +150,8 @@ ninja
 
 After YAML changes, always clean first: `python configure.py --clean`
 
+The first build (before adding splits) should produce a matching checksum. If it doesn't match, use `xxd` or similar hex tools to compare `build/<basename>.z64` against `baserom.z64` and find where bytes differ - this indicates a toolchain or configuration issue that must be resolved before proceeding.
+
 Once building succeeds:
 1. Add the suggested splits from splat output to the yaml
 2. Rebuild and verify still matches
@@ -165,6 +167,8 @@ Create `tools/` folder for helper scripts.
 #!/bin/bash
 mkdir -p expected && cp -r build expected/
 ```
+
+Only run this after a build passes checksum verification - expected/ should only contain verified matching builds.
 
 **tools/first_diff.py** - Find first difference between builds. Use [references/first_diff.py](references/first_diff.py) as a starting point. Update `BASENAME` to match your project, then run with `uv run tools/first_diff.py` (dependencies are specified inline). The script:
 - Compares built ROM against expected
